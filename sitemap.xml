@@ -659,7 +659,7 @@
   </url>
   
   <url>
-    <loc>https://github.com/Eviden0/new-webpage/life/games/index.html</loc>
+    <loc>https://github.com/Eviden0/new-webpage/life/movies/index.html</loc>
     
     <lastmod>2024-06-09</lastmod>
     
@@ -668,7 +668,7 @@
   </url>
   
   <url>
-    <loc>https://github.com/Eviden0/new-webpage/life/movies/index.html</loc>
+    <loc>https://github.com/Eviden0/new-webpage/life/games/index.html</loc>
     
     <lastmod>2024-06-09</lastmod>
     
@@ -695,7 +695,7 @@
   </url>
   
   <url>
-    <loc>https://github.com/Eviden0/new-webpage/box/animation/index.html</loc>
+    <loc>https://github.com/Eviden0/new-webpage/box/gallery/index.html</loc>
     
     <lastmod>2024-06-09</lastmod>
     
@@ -704,7 +704,7 @@
   </url>
   
   <url>
-    <loc>https://github.com/Eviden0/new-webpage/box/gallery/index.html</loc>
+    <loc>https://github.com/Eviden0/new-webpage/box/animation/index.html</loc>
     
     <lastmod>2024-06-09</lastmod>
     
@@ -740,7 +740,7 @@
   </url>
   
   <url>
-    <loc>https://github.com/Eviden0/new-webpage/posts/4b7af5ea.html</loc>
+    <loc>https://github.com/Eviden0/new-webpage/posts/71641dc5.html</loc>
     
     <lastmod>2024-06-09</lastmod>
     
@@ -749,7 +749,7 @@
   </url>
   
   <url>
-    <loc>https://github.com/Eviden0/new-webpage/posts/71641dc5.html</loc>
+    <loc>https://github.com/Eviden0/new-webpage/posts/4b7af5ea.html</loc>
     
     <lastmod>2024-06-09</lastmod>
     
@@ -928,27 +928,6 @@
   </url>
   
   <url>
-    <loc>https://github.com/Eviden0/new-webpage/tags/SQL%E6%B3%A8%E5%85%A5/</loc>
-    <lastmod>2024-09-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://github.com/Eviden0/new-webpage/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/</loc>
-    <lastmod>2024-09-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://github.com/Eviden0/new-webpage/tags/%E6%B3%A8%E5%85%A5/</loc>
-    <lastmod>2024-09-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://github.com/Eviden0/new-webpage/tags/Weblogic/</loc>
     <lastmod>2024-09-12</lastmod>
     <changefreq>weekly</changefreq>
@@ -970,7 +949,14 @@
   </url>
   
   <url>
-    <loc>https://github.com/Eviden0/new-webpage/tags/SSTI/</loc>
+    <loc>https://github.com/Eviden0/new-webpage/tags/SQL%E6%B3%A8%E5%85%A5/</loc>
+    <lastmod>2024-09-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/Eviden0/new-webpage/tags/%E6%B3%A8%E5%85%A5/</loc>
     <lastmod>2024-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -998,6 +984,20 @@
   </url>
   
   <url>
+    <loc>https://github.com/Eviden0/new-webpage/tags/XXE/</loc>
+    <lastmod>2024-09-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/Eviden0/new-webpage/tags/SSTI/</loc>
+    <lastmod>2024-09-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://github.com/Eviden0/new-webpage/tags/C/</loc>
     <lastmod>2024-09-12</lastmod>
     <changefreq>weekly</changefreq>
@@ -1005,7 +1005,7 @@
   </url>
   
   <url>
-    <loc>https://github.com/Eviden0/new-webpage/tags/XXE/</loc>
+    <loc>https://github.com/Eviden0/new-webpage/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</loc>
     <lastmod>2024-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1019,7 +1019,7 @@
   </url>
   
   <url>
-    <loc>https://github.com/Eviden0/new-webpage/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</loc>
+    <loc>https://github.com/Eviden0/new-webpage/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/</loc>
     <lastmod>2024-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1035,13 +1035,6 @@
   </url>
   
   <url>
-    <loc>https://github.com/Eviden0/new-webpage/categories/CTF/</loc>
-    <lastmod>2024-09-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://github.com/Eviden0/new-webpage/categories/%E6%BC%94%E7%A4%BA/</loc>
     <lastmod>2024-09-12</lastmod>
     <changefreq>weekly</changefreq>
@@ -1049,14 +1042,14 @@
   </url>
   
   <url>
-    <loc>https://github.com/Eviden0/new-webpage/categories/%E6%96%B0%E6%89%8B%E6%9D%91%E7%9A%84%E6%93%8D%E4%BD%9C/</loc>
+    <loc>https://github.com/Eviden0/new-webpage/categories/CTF/</loc>
     <lastmod>2024-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://github.com/Eviden0/new-webpage/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/</loc>
+    <loc>https://github.com/Eviden0/new-webpage/categories/%E6%96%B0%E6%89%8B%E6%9D%91%E7%9A%84%E6%93%8D%E4%BD%9C/</loc>
     <lastmod>2024-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1113,6 +1106,13 @@
   
   <url>
     <loc>https://github.com/Eviden0/new-webpage/categories/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/</loc>
+    <lastmod>2024-09-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/Eviden0/new-webpage/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/</loc>
     <lastmod>2024-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
